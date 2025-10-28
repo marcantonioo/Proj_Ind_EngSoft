@@ -6,6 +6,6 @@
 int main(){
     bib teste('a');  
     std::cout << teste.mtoM() << std::flush;
-    std::cout << "deu certo" << std::endl;
+    std::cout << "deu certo";
     return 0;
 }
