@@ -9,7 +9,6 @@ int main(){
         bib z('z');
         assert(z.mtoM() == 'Z');
 
-        // Teste com caractere não minúsculo (deve retornar '!')
         bib excl('!');
         assert(excl.mtoM() == '!');
 
@@ -36,7 +35,7 @@ int main(){
         bib numero('5');
         assert(numero.Mtom() == '!');
     }
-    
+
     {
         bib letra('a');
         char maiuscula = letra.mtoM();
