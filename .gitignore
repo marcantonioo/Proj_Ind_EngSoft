@@ -1,0 +1,11 @@
+/bin/*
+!/bin/.gitkeep
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+*.log
+.vscode/
