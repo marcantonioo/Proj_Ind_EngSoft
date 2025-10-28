@@ -1,15 +1,28 @@
 CXX = g++
 LCLTST = ./test/main.cpp
-all: app
-app: ./src/main.cpp ./bin/libbib.so
-	$(CXX) ./src/main.cpp -L./bin -lbib -o ./bin/app
+APP = ./bin/app
+LIB = ./bin/libbib.so
+TEST = ./bin/test
 
-./bin/libbib.so: ./src/bib.cpp
+# Alvo padrão
+all: $(APP)
+
+# Compila o app principal
+$(APP): ./src/main.cpp $(LIB)
 	mkdir -p ./bin
-	$(CXX) -shared -o ./bin/libbib.so -fPIC ./src/bib.cpp
+	$(CXX) ./src/main.cpp -L./bin -lbib -Wl,-rpath=$(PWD)/bin -o $(APP)
 
-test: $(LCLTST)
-	g++ $(LCLTST) -o ./bin/test -Wextra
-	./bin/test
+# Compila a biblioteca compartilhada
+$(LIB): ./src/bib.cpp
+	mkdir -p ./bin
+	$(CXX) -shared -fPIC -o $(LIB) ./src/bib.cpp
+
+# Compila e executa os testes
+test: $(LCLTST) $(LIB)
+	mkdir -p ./bin
+	$(CXX) $(LCLTST) -L./bin -lbib -Wl,-rpath=$(PWD)/bin -o $(TEST) -Wextra
+	LD_LIBRARY_PATH=$(PWD)/bin $(TEST)
+
+# Limpeza
 clean:
-	rm -f app ./bin/*
+	rm -rf ./bin
