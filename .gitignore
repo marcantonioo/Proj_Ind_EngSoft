@@ -1,5 +1,5 @@
 # ignoring build files
-/bin/
+/bin
 /bin/*
 obj/
 *.o
@@ -10,3 +10,4 @@ obj/
 *.so
 *.dll
 *.log
+.vscode
