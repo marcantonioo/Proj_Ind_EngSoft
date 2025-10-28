@@ -1,7 +1,5 @@
-# ignoring build files
-/bin
 /bin/*
-obj/
+!/bin/.gitkeep
 *.o
 *.obj
 *.exe
@@ -10,4 +8,4 @@ obj/
 *.so
 *.dll
 *.log
-.vscode
+.vscode/
