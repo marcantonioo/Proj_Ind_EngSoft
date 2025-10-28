@@ -1,0 +1,12 @@
+# ignoring build files
+/bin/
+/bin/*
+obj/
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+*.log
